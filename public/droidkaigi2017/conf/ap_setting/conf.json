@@ -1,0 +1,39 @@
+{
+  "room_1": {
+    "AP01": { "coordinates": { "x": 126, "y": 74 }, "max": 60 },
+    "AP02": { "coordinates": { "x": 149, "y": 202 }, "max": 60 },
+    "AP03": { "coordinates": { "x": 236, "y": 73 }, "max": 60 },
+    "AP04": { "coordinates": { "x": 288, "y": 196 }, "max": 60 }
+  },
+  "room_2": {
+    "AP05": { "coordinates": { "x": 347, "y": 68 }, "max": 60 },
+    "AP06": { "coordinates": { "x": 447, "y": 196 }, "max": 60 }
+  },
+  "room_3": {
+    "AP10": { "coordinates": { "x": 651, "y": 76 }, "max": 60 },
+    "AP11": { "coordinates": { "x": 753, "y": 200 }, "max": 60 },
+    "AP12": { "coordinates": { "x": 789, "y": 126 }, "max": 60 },
+    "AP13": { "coordinates": { "x": 832, "y": 197 }, "max": 60 },
+    "AP14": { "coordinates": { "x": 909, "y": 75 }, "max": 60 }
+  },
+  "room_4": {
+    "AP15": { "coordinates": { "x": 1100, "y": 198 }, "max": 60 },
+    "AP16": { "coordinates": { "x": 1023, "y": 77 }, "max": 60 }
+  },
+  "room_5": {
+    "AP17": { "coordinates": { "x": 1195, "y": 135 }, "max": 60 }
+  },
+  "room_6": {
+    "AP18": { "coordinates": { "x": 1019, "y": 254 }, "max": 60 }
+  },
+  "lobby": {
+    "AP07": { "coordinates": { "x": 617, "y": 143 }, "max": 60 }
+  },
+  "sponsor": {
+    "AP19": { "coordinates": { "x": 763, "y": 306 }, "max": 60 }
+  },
+  "speaker": {
+    "AP09": { "coordinates": { "x": 810, "y": 259 }, "max": 60 }
+  }
+}
+
