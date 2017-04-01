@@ -2,11 +2,11 @@
   "hall": {
     "APL1": { "coordinates": { "x": 493, "y": 95 }, "max": 60 },
     "APL2": { "coordinates": { "x": 520, "y": 280 }, "max": 60 },
-    "APL3": { "coordinates": { "x": 385, "y": 249 }, "max": 60 },
-    "APL4": { "coordinates": { "x": 476, "y": 468 }, "max": 60 },
-    "APL5": { "coordinates": { "x": 321, "y": 438 }, "max": 60 },
-    "APL6": { "coordinates": { "x": 166, "y": 439 }, "max": 60 },
-    "APL7": { "coordinates": { "x": 261, "y": 240 }, "max": 60 }
+    "APR3": { "coordinates": { "x": 385, "y": 249 }, "max": 60 },
+    "APR4": { "coordinates": { "x": 476, "y": 468 }, "max": 60 },
+    "APR5": { "coordinates": { "x": 321, "y": 438 }, "max": 60 },
+    "APR6": { "coordinates": { "x": 166, "y": 439 }, "max": 60 },
+    "APR7": { "coordinates": { "x": 261, "y": 240 }, "max": 60 }
   }
 }
 
