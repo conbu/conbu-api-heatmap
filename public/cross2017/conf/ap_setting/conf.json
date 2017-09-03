@@ -1,0 +1,25 @@
+{
+  "hall": {
+    "APL1": { "coordinates": { "x": 227, "y": 126 }, "max": 60 },
+    "APL2": { "coordinates": { "x": 220, "y": 232 }, "max": 60 },
+    "APR3": { "coordinates": { "x": 201, "y": 328 }, "max": 60 },
+    "APR4": { "coordinates": { "x": 225, "y": 352 }, "max": 60 },
+    "APR5": { "coordinates": { "x": 330, "y": 171 }, "max": 60 },
+    "APR6": { "coordinates": { "x": 330, "y": 283 }, "max": 60 },
+    "APR7": { "coordinates": { "x": 337, "y": 394 }, "max": 60 },
+    "APL8": { "coordinates": { "x": 480, "y": 337 }, "max": 60 },
+    "APL9": { "coordinates": { "x": 408, "y": 242 }, "max": 60 },
+    "APR10": { "coordinates": { "x": 503, "y": 166 }, "max": 60 },
+    "APR11": { "coordinates": { "x": 560, "y": 244 }, "max": 60 },
+    "APR12": { "coordinates": { "x": 565, "y": 400 }, "max": 60 },
+    "APR13": { "coordinates": { "x": 633, "y": 302 }, "max": 60 },
+    "APR14": { "coordinates": { "x": 670, "y": 183 }, "max": 60 },
+    "APL15": { "coordinates": { "x": 770, "y": 176 }, "max": 60 },
+    "APL16": { "coordinates": { "x": 730, "y": 305 }, "max": 60 },
+    "APR17": { "coordinates": { "x": 855, "y": 221 }, "max": 60 },
+    "APR18": { "coordinates": { "x": 842, "y": 338 }, "max": 60 },
+    "APR19": { "coordinates": { "x": 709, "y": 385 }, "max": 60 },
+    "APR20": { "coordinates": { "x": 737, "y": 552 }, "max": 60 }
+  }
+}
+
