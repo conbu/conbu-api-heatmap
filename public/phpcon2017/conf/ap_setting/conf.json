@@ -1,5 +1,5 @@
 {
-  "1Fhall": {
+  "1FHall": {
     "AP101": { "coordinates": { "x": 495, "y": 261 }, "max": 60 },
     "AP102": { "coordinates": { "x": 440, "y": 184 }, "max": 60 },
     "AP103": { "coordinates": { "x": 483, "y": 103 }, "max": 60 },
@@ -13,7 +13,7 @@
     "AP111": { "coordinates": { "x": 40,  "y": 856 }, "max": 60 },
     "AP112": { "coordinates": { "x": 222, "y": 743 }, "max": 60 }
   },
-  "2Fhall": {
+  "2FHall": {
     "AP201": { "coordinates": { "x": 451, "y": 485 }, "max": 60 },
     "AP202": { "coordinates": { "x": 496, "y": 603 }, "max": 60 },
     "AP203": { "coordinates": { "x": 349, "y": 506 }, "max": 60 },
@@ -21,7 +21,7 @@
     "AP206": { "coordinates": { "x": 303, "y": 602 }, "max": 60 },
     "AP207": { "coordinates": { "x": 142, "y": 586 }, "max": 60 }
   },
-  "3FROOM": {
+  "3FRoom": {
     "AP301": { "coordinates": { "x": 320, "y": 897 }, "max": 60 },
     "AP302": { "coordinates": { "x": 475, "y": 741 }, "max": 60 }
   },
