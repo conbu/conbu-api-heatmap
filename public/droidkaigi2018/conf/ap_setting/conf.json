@@ -1,0 +1,33 @@
+{
+  "room12": {
+    "ap01": { "coordinates": { "x": 126, "y": 132 }, "max": 60 },
+    "ap02": { "coordinates": { "x": 296, "y": 127 }, "max": 60 },
+    "ap03": { "coordinates": { "x": 201, "y": 249 }, "max": 60 },
+    "ap04": { "coordinates": { "x": 326, "y": 127 }, "max": 60 },
+    "ap05": { "coordinates": { "x": 476, "y": 190 }, "max": 60 }
+  },
+  "lobby": {
+    "ap06": { "coordinates": { "x": 636, "y": 171 }, "max": 60 }
+  },
+  "noc": {
+    "ap07": { "coordinates": { "x": 665, "y": 130 }, "max": 60 },
+    "ap08": { "coordinates": { "x": 979, "y": 252 }, "max": 60 }
+  },
+  "room3": {
+    "ap09": { "coordinates": { "x": 1001, "y": 129 }, "max": 60 },
+    "ap10": { "coordinates": { "x": 1210, "y": 130 }, "max": 60 },
+    "ap11": { "coordinates": { "x": 1219, "y": 254 }, "max": 60 }
+  },
+  "room45": {
+    "ap12": { "coordinates": { "x": 293, "y": 409 }, "max": 60 },
+    "ap13": { "coordinates": { "x": 479, "y": 413 }, "max": 60 }
+  },
+  "room78": {
+    "ap14": { "coordinates": { "x": 634, "y": 361 }, "max": 60 },
+    "ap15": { "coordinates": { "x": 789, "y": 406 }, "max": 60 },
+    "ap16": { "coordinates": { "x": 881, "y": 401 }, "max": 60 }
+  },
+  "wait": {
+    "ap17": { "coordinates": { "x": 1079, "y": 407 }, "max": 60 }
+  }
+}
