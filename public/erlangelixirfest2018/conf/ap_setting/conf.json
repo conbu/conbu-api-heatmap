@@ -1,0 +1,20 @@
+{
+  "apg-2f-lobby": {
+    "18b-ve2-ap01": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve2-ap07": { "coordinates": { "x": 123, "y": 123 }, "max": 60 }
+  }
+  "apg-2f-front": {
+    "18b-ve2-ap03": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve2-ap04": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve2-ap05": { "coordinates": { "x": 123, "y": 123 }, "max": 60 }
+  }
+  "apg-2f-back": {
+    "18b-ve2-ap02": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve2-ap06": { "coordinates": { "x": 123, "y": 123 }, "max": 60 }
+  }
+  "apg-5f": {
+    "18b-ve5-ap01": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve5-ap02": { "coordinates": { "x": 123, "y": 123 }, "max": 60 },
+    "18b-ve5-ap03": { "coordinates": { "x": 123, "y": 123 }, "max": 60 }
+  }
+}
