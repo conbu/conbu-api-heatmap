@@ -41,7 +41,7 @@
     } else if (window.ActiveXObject) { // IE 6 and older
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    httpRequest.open('GET', "http://10.20.0.7:9292/v1/associations/" + place + "/both", false);
+    httpRequest.open('GET', "http://noc-hm.official.live:9292/v1/associations/" + place + "/both", false);
     httpRequest.send();
     if (httpRequest.status === 200) {
       associations = JSON.parse(httpRequest.responseText).associations;
