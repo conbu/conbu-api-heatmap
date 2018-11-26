@@ -14,7 +14,7 @@
     "AP10": { "coordinates": { "x": 600, "y": 1130 }, "max": 60 },
     "AP11": { "coordinates": { "x": 720, "y": 900 }, "max": 60 },
     "AP12": { "coordinates": { "x": 280, "y": 320 }, "max": 60 },
-    "AP13": { "coordinates": { "x": 300, "y": 1000 }, "max": 60 }
+    "AP13": { "coordinates": { "x": 320, "y": 950 }, "max": 60 },
+    "AP14": { "coordinates": { "x": 300, "y": 1000 }, "max": 60 }
   }
 }
-
