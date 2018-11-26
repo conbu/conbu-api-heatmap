@@ -8,12 +8,13 @@
     "AP06": { "coordinates": { "x": 895, "y": 120 }, "max": 60 }
   },
   "floor_3f": {
-    "AP07": { "coordinates": { "x": 140, "y": 900 }, "max": 60 },
+    "AP07": { "coordinates": { "x": 140, "y": 1100 }, "max": 60 },
     "AP08": { "coordinates": { "x": 320, "y": 1050 }, "max": 60 },
     "AP09": { "coordinates": { "x": 450, "y": 950 }, "max": 60 },
     "AP10": { "coordinates": { "x": 600, "y": 1130 }, "max": 60 },
     "AP11": { "coordinates": { "x": 720, "y": 900 }, "max": 60 },
-    "AP12": { "coordinates": { "x": 80, "y": 300 }, "max": 60 }
+    "AP12": { "coordinates": { "x": 280, "y": 320 }, "max": 60 },
+    "AP13": { "coordinates": { "x": 300, "y": 1000 }, "max": 60 }
   }
 }
 
