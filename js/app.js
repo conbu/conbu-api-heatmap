@@ -1,5 +1,6 @@
 var config = {
-  container: document.getElementById('top-view')
+  container: document.getElementById('top-view'),
+  app_config: "conf/ap_setting/conf.json"
 };
 var heatmapInstance = h337.create(config);
 var _dataPoint = {
@@ -120,24 +121,17 @@ function start() {
   setTimeout(start, 10000);
 }
 
-function loadApSetting(){
-  var httpRequest;
-  var associations;
-  if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
-      httpRequest = new XMLHttpRequest();
-  } else if (window.ActiveXObject) { // IE 6 and older
-      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  httpRequest.open('GET', "conf/ap_setting/conf.json", false);
-  httpRequest.send();
-  if (httpRequest.status === 200) {
-    apSetting = JSON.parse(httpRequest.responseText);
-  } else {
-    console.log("api error");
-  }
-}
+window.addEventListener("load", function(event) {
+  fetch(config.app_config, {cache: "no-cache", method: "GET"})
+  .then((response) => {
+    if (response.ok) {
+      apSetting = response.json();
+      start();
+      return true;
+    }
+    throw Error('app_config load error with ' + response.status);
+  }).catch((error) => {
+    console.log("API error, failed on initial load: " + error.message);
+  });
+});
 
-window.onload = function() {
-  loadApSetting();
-  start();
-};
