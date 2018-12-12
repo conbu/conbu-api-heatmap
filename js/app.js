@@ -1,6 +1,7 @@
 var config = {
   ap_config: "conf/ap_setting/conf.json",
   global_config: "config.json",
+  api_head: "http://api.conbu.net/v1/associations/",
 };
 var global_config = {};
 
@@ -22,35 +23,34 @@ var apSetting;
 
 function getDataPoints(group) {
   var dataPoints = [];
+  var p_arr = [];
   Object.keys(group).forEach(function (key) {
-    var associations = getAssociations(key);
-    var clonedDataPoint = (JSON.parse(JSON.stringify(_dataPoint)));
-    clonedDataPoint.x = group[key].coordinates.x;
-    clonedDataPoint.y = group[key].coordinates.y;
-    clonedDataPoint.key = key;
-    clonedDataPoint.rowValue = associations;
-    clonedDataPoint.value = associations * (1000 / group[key].max);
-    dataPoints.push(clonedDataPoint);
+    p_arr.push(getAssociations(key, group[key]));
+  });
+  Promise.all(p_arr).then(vals => {
+    vals.forEach(cval => {dataPoints.push(cval); }) })
+  .catch(reason => {
+    console.log("API error, failed on load: " + reason.message);
+    return;
   });
   return dataPoints;
 }
 
-function getAssociations(place) {
-  var httpRequest;
-  var associations;
-  if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
-      httpRequest = new XMLHttpRequest();
-  } else if (window.ActiveXObject) { // IE 6 and older
-      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  httpRequest.open('GET', "http://api.conbu.net/v1/associations/" + place + "/both", false);
-  httpRequest.send();
-  if (httpRequest.status === 200) {
-    associations = JSON.parse(httpRequest.responseText).associations;
-  } else {
-    console.log("api error");
-  }
-  return associations;
+function getAssociations(place, group) {
+  fetch(config.api_head + place + "/both", {cache: "no-cache", method: "GET"})
+  .then((response) => {
+    if (response.ok) { return response.json(); }
+    throw('API access error for ' + place + ' : ' + response.status);
+  }).then(data => {
+    var dp = {};
+    Object.assign(dp, _dataPoint);
+    dp.x = group.coordinates.x;
+    dp.y = group.coordinates.y;
+    dp.key = key;
+    dp.rowValue = data.associations;
+    dp.value = associations * (1000 / group.max);
+    return dp;
+  });
 }
 
 function updateTime() {
