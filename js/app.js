@@ -46,7 +46,7 @@ function getDataPoints(group) {
   return Promise.all(p_arr).then(vals => {
     vals.forEach(cval => {dataPoints.push(cval); }) })
   .catch(reason => {
-    console.log("API error, failed on load: " + reason.message);
+    console.log("API error, failed on data acquisition: " + reason.message);
     return undefined;
   }).then(vals => { return dataPoints; });
 }
@@ -78,6 +78,7 @@ function start() {
   ); });
   hmRun = true;
   Promise.all(p_arr).then(vals => {
+    dataPoints = dataPoints.flat();
     heatmapInstance.setData({ max: 1000, min: 0, data: dataPoints });
 
   // add new
