@@ -11,4 +11,7 @@ CONBU APIサーバからデータを定期的に取得し、会場マップの�
 
 ### 設定ファイルの書き方
 
-(TBW)
+* config.json.sampleをconfig.jsonにコピーする
+* 以下の項目を設定する
+  * image: 背景画像、通常imgディレクトリ内にファイルを置いてimg/xxxx.pngを指定する
+  * event: イベント名、ページのタイトルと表示のヘッダに入る
