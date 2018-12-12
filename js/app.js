@@ -1,8 +1,10 @@
 var config = {
-  container: document.getElementById('top-view'),
-  app_config: "conf/ap_setting/conf.json"
+  ap_config: "conf/ap_setting/conf.json",
+  global_config: "config.json",
 };
-var heatmapInstance = h337.create(config);
+var global_config = {};
+
+var heatmapInstance;
 var _dataPoint = {
   radius: 130,
 //  opacity: 1,
@@ -122,16 +124,27 @@ function start() {
 }
 
 window.addEventListener("load", function(event) {
-  fetch(config.app_config, {cache: "no-cache", method: "GET"})
-  .then((response) => {
-    if (response.ok) {
-      apSetting = response.json();
-      start();
-      return true;
-    }
-    throw Error('app_config load error with ' + response.status);
-  }).catch((error) => {
-    console.log("API error, failed on initial load: " + error.message);
+  Promise.all([
+    fetch(config.ap_config, {cache: "no-cache", method: "GET"})
+    .then((response) => {
+      if (response.ok) { return response.json(); }
+      throw('ap_config load error with ' + response.status);
+    }).then(data => { apSetting = data }),
+    fetch(config.global_config, {cache: "no-cache", method: "GET"})
+    .then((response) => {
+      if (response.ok) { return response.json(); }
+      throw('global_config load error with ' + response.status);
+    }).then(data => { global_config = data }),
+  ]).then(vals => {
+    heatmapInstance = h337.create({
+      container: document.getElementById('top-view'),
+    });
+    console.log(global_config);
+    console.log(apSetting);
+    start();
+  }).catch(reason => {
+    console.log("API error, failed on initial load: " + reason.message);
+    return;
   });
 });
 
