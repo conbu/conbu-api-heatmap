@@ -6,6 +6,7 @@ var config = {
 var global_config = {};
 
 var heatmapInstance;
+var hmRun = false;
 var _dataPoint = {
   radius: 130,
 //  opacity: 1,
@@ -25,32 +26,29 @@ function getDataPoints(group) {
   var dataPoints = [];
   var p_arr = [];
   Object.keys(group).forEach(function (key) {
-    p_arr.push(getAssociations(key, group[key]));
+    p_arr.push(
+      fetch(config.api_head + key + "/both",
+        {cache: "no-cache", method: "GET"})
+      .then((response) => {
+        if (response.ok) { return response.json(); }
+        throw('API access error for ' + key + ' : ' + response.status);
+      }).then(data => {
+        var dp = {};
+        Object.assign(dp, _dataPoint);
+        dp.x = group[key].coordinates.x;
+        dp.y = group[key].coordinates.y;
+        dp.key = key;
+        dp.rowValue = data.associations;
+        dp.value = associations * (1000 / group[key].max);
+        return dp;
+      }) );
   });
-  Promise.all(p_arr).then(vals => {
+  return Promise.all(p_arr).then(vals => {
     vals.forEach(cval => {dataPoints.push(cval); }) })
   .catch(reason => {
     console.log("API error, failed on load: " + reason.message);
-    return;
-  });
-  return dataPoints;
-}
-
-function getAssociations(place, group) {
-  fetch(config.api_head + place + "/both", {cache: "no-cache", method: "GET"})
-  .then((response) => {
-    if (response.ok) { return response.json(); }
-    throw('API access error for ' + place + ' : ' + response.status);
-  }).then(data => {
-    var dp = {};
-    Object.assign(dp, _dataPoint);
-    dp.x = group.coordinates.x;
-    dp.y = group.coordinates.y;
-    dp.key = key;
-    dp.rowValue = data.associations;
-    dp.value = associations * (1000 / group.max);
-    return dp;
-  });
+    return undefined;
+  }).then(vals => { return dataPoints; });
 }
 
 function updateTime() {
@@ -66,16 +64,21 @@ function updateTime() {
 
 function start() {
 
-  var dataPoints = [];
-  Object.keys(apSetting).forEach(function (key) {
-    dataPoints = dataPoints.concat(getDataPoints(apSetting[key]));
-  });
-  var data = {
-    max: 1000,
-    min: 0,
-    data: dataPoints
+  if (hmRun) {
+    console.log('Not running data retrieve. Already running until timeout.');
+    setTimeout(start, global_config.interval * 1000);
+    return;
   };
-  heatmapInstance.setData(data);
+
+  var dataPoints = [];
+  var p_arr = [];
+  Object.keys(apSetting).forEach(function (key) {
+    p_arr.push(getDataPoints(apSetting[key])
+      .then(val => {if (!(! val)) {dataPoints.push(val); } })
+  ); });
+  hmRun = true;
+  Promise.all(p_arr).then(vals => {
+    heatmapInstance.setData({ max: 1000, min: 0, data: dataPoints });
 
   // add new
   var tipCanvas = document.getElementById("tip");
@@ -118,9 +121,11 @@ function start() {
     if (!hit) { tipCanvas.style.left = "-200px"; }
   }
 
-  updateTime();
+    updateTime();
+    hmRun = false;
+  });
 
-  setTimeout(start, 10000);
+  setTimeout(start, global_config.interval * 1000);
 }
 
 function ModifyEvent() {
@@ -156,10 +161,9 @@ window.addEventListener("load", function(event) {
     heatmapInstance = h337.create({
       container: document.getElementById('top-view'),
     });
-    start();
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
     return;
-  });
+  }).then(vals => { start(); })
 });
 

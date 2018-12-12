@@ -1,4 +1,5 @@
 {
   "image": "img/TESTIMAGE.png",
-  "event": "TESTEVENT"
+  "event": "TESTEVENT",
+  "interval": 10
 }
