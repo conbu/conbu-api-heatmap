@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>DroidKaigi 2018 会場ヒートマップ | CONBU API</title>
+  <title>{EVENTNAME} 会場ヒートマップ | CONBU API</title>
   <meta name="viewport" content="width=1300px">
   <script type="text/javascript" src="js/heatmap/heatmap.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-  <h1 style="font-size: 42px; line-height: 50px;">DroidKaigi 2018 会場ヒートマップ</h1>
+  <h1 style="font-size: 42px; line-height: 50px;" id="h_title">{EVENTNAME} 会場ヒートマップ</h1>
   <div id="top-view">
-    <div id="floor"><img src="img/bs_shinjuku_5f.png" alt="bs_shinjuku_5f"></div>
+    <div id="floor"><img id="back_img"></div>
     <canvas id="tip" style="position: absolute; left: -900px; z-index: 9999;"></canvas>
   </div>
   <div id="time" style="position: absolute; top: 30px;left: 900px;font-size: 32px;"></div>

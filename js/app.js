@@ -123,6 +123,22 @@ function start() {
   setTimeout(start, 10000);
 }
 
+function ModifyEvent() {
+  // title
+  var re = /\{EVENTNAME\}/;
+  var tstr;
+  tstr = document.title;
+  document.title = tstr.replace(re, global_config.event);
+  tstr = document.getElementById('h_title').innerText;
+  document.getElementById('h_title').innerText = 
+    tstr.replace(re, global_config.event);
+
+  // image
+  var bg_img = document.getElementById('back_img');
+  bg_img.src = global_config.image;
+  bg_img.alt = global_config.image;
+}
+
 window.addEventListener("load", function(event) {
   Promise.all([
     fetch(config.ap_config, {cache: "no-cache", method: "GET"})
@@ -136,11 +152,10 @@ window.addEventListener("load", function(event) {
       throw('global_config load error with ' + response.status);
     }).then(data => { global_config = data }),
   ]).then(vals => {
+    ModifyEvent();
     heatmapInstance = h337.create({
       container: document.getElementById('top-view'),
     });
-    console.log(global_config);
-    console.log(apSetting);
     start();
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
