@@ -132,14 +132,21 @@ function ModifyEvent() {
   tstr = document.getElementById('h_title').innerText;
   document.getElementById('h_title').innerText = 
     tstr.replace(re, global_config.event);
-
-  // image
-  var bg_img = document.getElementById('back_img');
-  bg_img.src = global_config.image;
-  bg_img.alt = global_config.image;
 }
 
-window.addEventListener("load", function(event) {
+function LoadImage(url) {
+  return new Promise((resolve, reject) => {
+    let img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = e => reject(e);
+    img.src = url;
+    img.id = 'back_img';
+    img.alt = url;
+    document.getElementById('floor').appendChild(img);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", function(event) {
   Promise.all([
     fetch(config.ap_config, {cache: "no-cache", method: "GET"})
     .then((response) => {
@@ -153,10 +160,13 @@ window.addEventListener("load", function(event) {
     }).then(data => { global_config = data }),
   ]).then(vals => {
     ModifyEvent();
-    heatmapInstance = h337.create({
-      container: document.getElementById('top-view'),
+    LoadImage(global_config.image).then(img => {
+      heatmapInstance = h337.create({
+        container: document.getElementById('top-view'),
+      });
+      console.log('Starting process');
+      start();
     });
-    start();
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
     return;
