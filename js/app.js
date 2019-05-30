@@ -1,10 +1,12 @@
 var config = {
   ap_config: "conf/ap_setting/conf.json",
   global_config: "config.json",
+  api_head: "http://api.conbu.net/v1/associations/",
 };
 var global_config = {};
 
 var heatmapInstance;
+var hmRun = false;
 var _dataPoint = {
   radius: 130,
 //  opacity: 1,
@@ -22,35 +24,31 @@ var apSetting;
 
 function getDataPoints(group) {
   var dataPoints = [];
+  var p_arr = [];
   Object.keys(group).forEach(function (key) {
-    var associations = getAssociations(key);
-    var clonedDataPoint = (JSON.parse(JSON.stringify(_dataPoint)));
-    clonedDataPoint.x = group[key].coordinates.x;
-    clonedDataPoint.y = group[key].coordinates.y;
-    clonedDataPoint.key = key;
-    clonedDataPoint.rowValue = associations;
-    clonedDataPoint.value = associations * (1000 / group[key].max);
-    dataPoints.push(clonedDataPoint);
+    p_arr.push(
+      fetch(config.api_head + key + "/both",
+        {cache: "no-cache", method: "GET"})
+      .then((response) => {
+        if (response.ok) { return response.json(); }
+        throw('API access error for ' + key + ' : ' + response.status);
+      }).then(data => {
+        var dp = {};
+        Object.assign(dp, _dataPoint);
+        dp.x = group[key].coordinates.x;
+        dp.y = group[key].coordinates.y;
+        dp.key = key;
+        dp.rowValue = data.associations;
+        dp.value = associations * (1000 / group[key].max);
+        return dp;
+      }) );
   });
-  return dataPoints;
-}
-
-function getAssociations(place) {
-  var httpRequest;
-  var associations;
-  if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
-      httpRequest = new XMLHttpRequest();
-  } else if (window.ActiveXObject) { // IE 6 and older
-      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  httpRequest.open('GET', "http://api.conbu.net/v1/associations/" + place + "/both", false);
-  httpRequest.send();
-  if (httpRequest.status === 200) {
-    associations = JSON.parse(httpRequest.responseText).associations;
-  } else {
-    console.log("api error");
-  }
-  return associations;
+  return Promise.all(p_arr).then(vals => {
+    vals.forEach(cval => {dataPoints.push(cval); }) })
+  .catch(reason => {
+    console.log("API error, failed on data acquisition: " + reason.message);
+    return undefined;
+  }).then(vals => { return dataPoints; });
 }
 
 function updateTime() {
@@ -66,16 +64,22 @@ function updateTime() {
 
 function start() {
 
-  var dataPoints = [];
-  Object.keys(apSetting).forEach(function (key) {
-    dataPoints = dataPoints.concat(getDataPoints(apSetting[key]));
-  });
-  var data = {
-    max: 1000,
-    min: 0,
-    data: dataPoints
+  if (hmRun) {
+    console.log('Not running data retrieve. Already running until timeout.');
+    setTimeout(start, global_config.interval * 1000);
+    return;
   };
-  heatmapInstance.setData(data);
+
+  var dataPoints = [];
+  var p_arr = [];
+  Object.keys(apSetting).forEach(function (key) {
+    p_arr.push(getDataPoints(apSetting[key])
+      .then(val => {if (!(! val)) {dataPoints.push(val); } })
+  ); });
+  hmRun = true;
+  Promise.all(p_arr).then(vals => {
+    dataPoints = dataPoints.flat();
+    heatmapInstance.setData({ max: 1000, min: 0, data: dataPoints });
 
   // add new
   var tipCanvas = document.getElementById("tip");
@@ -118,9 +122,11 @@ function start() {
     if (!hit) { tipCanvas.style.left = "-200px"; }
   }
 
-  updateTime();
+    updateTime();
+    hmRun = false;
+  });
 
-  setTimeout(start, 10000);
+  setTimeout(start, global_config.interval * 1000);
 }
 
 function ModifyEvent() {
@@ -170,6 +176,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
     return;
-  });
+  }).then(vals => { start(); })
 });
 
