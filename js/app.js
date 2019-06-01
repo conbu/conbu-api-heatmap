@@ -1,7 +1,7 @@
 var config = {
   ap_config: "conf/ap_setting/conf.json",
   global_config: "config.json",
-  api_head: "http://api.conbu.net/v1/associations/",
+  api_head: "http://163.43.249.200/api/v1/associations/",
 };
 var global_config = {};
 
@@ -39,7 +39,7 @@ function getDataPoints(group) {
         dp.y = group[key].coordinates.y;
         dp.key = key;
         dp.rowValue = data.associations;
-        dp.value = associations * (1000 / group[key].max);
+        dp.value = data.associations * (1000 / group[key].max);
         return dp;
       }) );
   });
