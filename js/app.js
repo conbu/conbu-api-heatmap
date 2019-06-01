@@ -176,6 +176,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
     return;
-  }).then(vals => { start(); })
+  })
 });
 
