@@ -1,7 +1,7 @@
 var config = {
   ap_config: "conf/ap_setting/conf.json",
   global_config: "config.json",
-  api_head: "http://api.conbu.net/v1/associations/",
+  api_head: "http://59.106.219.41/api/v1/associations/",
 };
 var global_config = {};
 
@@ -39,7 +39,7 @@ function getDataPoints(group) {
         dp.y = group[key].coordinates.y;
         dp.key = key;
         dp.rowValue = data.associations;
-        dp.value = associations * (1000 / group[key].max);
+        dp.value = data.associations * (1000 / group[key].max);
         return dp;
       }) );
   });
@@ -176,6 +176,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
   }).catch(reason => {
     console.log("API error, failed on initial load: " + reason.message);
     return;
-  }).then(vals => { start(); })
+  })
 });
 
