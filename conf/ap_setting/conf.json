@@ -1,33 +1,49 @@
 {
-  "room12": {
-    "ap01": { "coordinates": { "x": 126, "y": 132 }, "max": 60 },
-    "ap02": { "coordinates": { "x": 296, "y": 127 }, "max": 60 },
-    "ap03": { "coordinates": { "x": 201, "y": 249 }, "max": 60 },
-    "ap04": { "coordinates": { "x": 326, "y": 127 }, "max": 60 },
-    "ap05": { "coordinates": { "x": 476, "y": 190 }, "max": 60 }
+  "floor_1": {
+    "AP101": { "coordinates": { "x": 926, "y": 129 }, "max": 60 },
+    "AP102": { "coordinates": { "x": 927, "y": 329 }, "max": 60 },
+    "AP103": { "coordinates": { "x": 932, "y": 437 }, "max": 60 },
+    "AP104": { "coordinates": { "x": 619, "y": 145 }, "max": 60 },
+    "AP105": { "coordinates": { "x": 607, "y": 265 }, "max": 60 },
+    "AP106": { "coordinates": { "x": 606, "y": 445 }, "max": 60 },
+    "AP107": { "coordinates": { "x": 431, "y": 81 }, "max": 60 },
+    "AP108": { "coordinates": { "x": 320, "y": 242 }, "max": 60 },
+    "AP109": { "coordinates": { "x": 373, "y": 435 }, "max": 60 },
+    "AP110": { "coordinates": { "x": 61, "y": 112 }, "max": 60 },
+    "AP111": { "coordinates": { "x": 58, "y": 407 }, "max": 60 }
   },
-  "lobby": {
-    "ap06": { "coordinates": { "x": 636, "y": 171 }, "max": 60 }
+  "ab": {
+    "AP121": { "coordinates": { "x": 49, "y": 1553 }, "max": 60 },
+    "AP122": { "coordinates": { "x": 239, "y": 1666 }, "max": 60 }
   },
-  "noc": {
-    "ap07": { "coordinates": { "x": 665, "y": 130 }, "max": 60 },
-    "ap08": { "coordinates": { "x": 979, "y": 252 }, "max": 60 }
+  "floor_2": {
+    "AP211": { "coordinates": { "x": 322, "y": 748 }, "max": 60 },
+    "AP212": { "coordinates": { "x": 373, "y": 571 }, "max": 60 },
+    "AP213": { "coordinates": { "x": 640, "y": 572 }, "max": 60 },
+    "AP214": { "coordinates": { "x": 849, "y": 576 }, "max": 60 },
+    "AP215": { "coordinates": { "x": 857, "y": 783 }, "max": 60 },
+    "AP216": { "coordinates": { "x": 595, "y": 800 }, "max": 60 }
   },
-  "room3": {
-    "ap09": { "coordinates": { "x": 1001, "y": 129 }, "max": 60 },
-    "ap10": { "coordinates": { "x": 1210, "y": 130 }, "max": 60 },
-    "ap11": { "coordinates": { "x": 1219, "y": 254 }, "max": 60 }
+  "floor_3": {
+    "AP311": { "coordinates": { "x": 951, "y": 1563 }, "max": 60 },
+    "AP312": { "coordinates": { "x": 759, "y": 1731 }, "max": 60 }
   },
-  "room45": {
-    "ap12": { "coordinates": { "x": 293, "y": 409 }, "max": 60 },
-    "ap13": { "coordinates": { "x": 479, "y": 413 }, "max": 60 }
+  "floor_4": {
+    "AP411": { "coordinates": { "x": 535, "y": 1028 }, "max": 60 },
+    "AP412": { "coordinates": { "x": 651, "y": 1106 }, "max": 60 },
+    "AP413": { "coordinates": { "x": 722, "y": 1246 }, "max": 60 },
+    "AP414": { "coordinates": { "x": 520, "y": 1368 }, "max": 60 },
+    "AP415": { "coordinates": { "x": 275, "y": 1374 }, "max": 60 },
+    "AP416": { "coordinates": { "x": 269, "y": 1110 }, "max": 60 },
+    "AP417": { "coordinates": { "x": 489, "y": 1210 }, "max": 60 }
   },
-  "room78": {
-    "ap14": { "coordinates": { "x": 634, "y": 361 }, "max": 60 },
-    "ap15": { "coordinates": { "x": 789, "y": 406 }, "max": 60 },
-    "ap16": { "coordinates": { "x": 881, "y": 401 }, "max": 60 }
+  "staff": {
+    "AP441": { "coordinates": { "x": 39, "y": 1159 }, "max": 60 }
   },
-  "wait": {
-    "ap17": { "coordinates": { "x": 1079, "y": 407 }, "max": 60 }
+  "floor_6": {
+    "AP611": { "coordinates": { "x": 708, "y": 1638 }, "max": 60 },
+    "AP612": { "coordinates": { "x": 571, "y": 1627 }, "max": 60 },
+    "AP621": { "coordinates": { "x": 375, "y": 1602 }, "max": 60 },
+    "AP622": { "coordinates": { "x": 289, "y": 1594 }, "max": 60 }
   }
 }
